@@ -1,4 +1,4 @@
-import { HelloDirective } from './utils/directives'
+import Translation from '@/plugins/translation'
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 
@@ -8,7 +8,7 @@ import router from './router'
 import './assets/main.css'
 
 const app = createApp(App)
-app.directive('hello', HelloDirective)
+app.use(Translation)
 
 app.use(createPinia())
 app.use(router)
