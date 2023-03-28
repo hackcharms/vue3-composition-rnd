@@ -1,9 +1,11 @@
 <script setup lang="ts">
-import TheWelcome from '../components/TheWelcome.vue'
 </script>
 
 <template>
   <main>
-    <TheWelcome />
+    <div class="px-2">
+      {{$translate('greeting.hello')}}! {{$translate('greeting.how_are_you')}}
+    </div>
+
   </main>
 </template>
