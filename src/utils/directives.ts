@@ -1,4 +1,4 @@
-import type { Directive, DirectiveBinding, VNode, VueElement } from 'vue'
+import type { Directive, DirectiveBinding, VNode, VueElement, defineEmits } from 'vue'
 
 export const BoldDirective: Directive = {
   beforeMount(el: VueElement, binding: DirectiveBinding, vnode: VNode) {
@@ -25,5 +25,31 @@ export const BlurDirective: Directive = {
   },
   unmounted(el: VueElement, binding) {
     window.removeEventListener('click', binding.event)
+  }
+}
+
+export const TransalteDirective: Directive = {
+  beforeMount(el: VueElement, binding: DirectiveBinding, vnode: VNode) {
+    // console.log('TransalteDirective')
+    window.addEventListener('input', () => {
+      // binding.value = binding.value + '1'
+      // console.log('TransalteDirective listener', binding, binding.value)
+    })
+  },
+  beforeUpdate(el: VueElement, binding: DirectiveBinding, vnode: VNode) {
+    // console.log('TransalteDirective')
+    // window.addEventListener('input', () => {
+    // binding.value = binding.value + '1'
+    const emit = new InputEvent('input-x', {
+      data: binding?.value?.toString()?.toUpperCase() as string
+    })
+    el.dispatchEvent(emit)
+    console.log(
+      'TransalteDirective listener updated',
+      binding?.value?.toString()?.toUpperCase(),
+      binding
+      // binding.value
+    )
+    // })
   }
 }

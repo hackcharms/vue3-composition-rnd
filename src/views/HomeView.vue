@@ -7,6 +7,11 @@ import TheModal from '@/components/TheModal.vue'
 import { ref } from 'vue'
 import TheWelcome from '@/components/TheWelcome.vue'
 
+const text = ref('')
+
+const logEvent = (event: Event) => {
+  console.log(event)
+}
 const posts: Post[] = [
   {
     title: 'This is Title of plant',
@@ -43,5 +48,7 @@ const modal = ref(false)
         </button>
       </the-modal>
     </div>
+    <v-text-field v-model="text" v-translate.hola="text" />
+    {{ text }}
   </main>
 </template>
