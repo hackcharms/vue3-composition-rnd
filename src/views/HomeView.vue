@@ -48,7 +48,8 @@ const modal = ref(false)
         </button>
       </the-modal>
     </div>
-    <v-text-field v-model="text" v-translate.hola="text" />
+    <v-text-field v-model="text" v-translate.hola="text" class="border" />
+    <input v-model="text" v-translate.hola="text" class="border" />
     {{ text }}
   </main>
 </template>
